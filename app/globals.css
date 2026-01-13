@@ -1,0 +1,133 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.141 0.005 285.823);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.141 0.005 285.823);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.141 0.005 285.823);
+  --primary: oklch(0.21 0.006 285.885);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.967 0.001 286.375);
+  --secondary-foreground: oklch(0.21 0.006 285.885);
+  --muted: oklch(0.967 0.001 286.375);
+  --muted-foreground: oklch(0.552 0.016 285.938);
+  --accent: oklch(0.967 0.001 286.375);
+  --accent-foreground: oklch(0.21 0.006 285.885);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.92 0.004 286.32);
+  --input: oklch(0.92 0.004 286.32);
+  --ring: oklch(0.705 0.015 286.067);
+
+  /* ACETERNITY UI ADDITIONS */
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --neon: #00f7ff;
+  --neon-glow: 0 0 12px rgba(0, 247, 255, 0.8);
+}
+
+/* Dark mode tokens */
+.dark {
+  --background: oklch(0.141 0.005 285.823);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.21 0.006 285.885);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.21 0.006 285.885);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.92 0.004 286.32);
+  --primary-foreground: oklch(0.21 0.006 285.885);
+  --secondary: oklch(0.274 0.006 286.033);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.274 0.006 286.033);
+  --muted-foreground: oklch(0.705 0.015 286.067);
+  --accent: oklch(0.274 0.006 286.033);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 0.1);
+  --input: oklch(1 0 0 / 0.15);
+  --ring: oklch(0.552 0.016 285.938);
+
+  /* Aceternity Dark Additions */
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --neon: #00eaff;
+  --neon-glow: 0 0 18px rgba(0, 234, 255, 0.8);
+}
+
+/* -------------------------
+   BASE GLOBAL STYLES
+------------------------- */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    background-image: radial-gradient(circle at top, rgba(0, 247, 255, 0.05), transparent),
+                      radial-gradient(circle at bottom, rgba(255, 0, 200, 0.05), transparent);
+  }
+}
+
+/* -------------------------
+    ACETERNITY CUSTOM UTILITIES
+------------------------- */
+
+/* Glass Effect */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-border);
+}
+
+/* Neon Glow */
+.neon {
+  color: var(--neon);
+  text-shadow: var(--neon-glow);
+}
+
+/* Hover Shine */
+.shine:hover {
+  background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+  );
+}
+
+/* Float Animation */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.gradient{
+  @apply bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600;
+}
+.gradient-title{
+  @apply gradient font-extrabold tracking-tighter pr-2 pb-2 text-transparent bg-clip-text;
+}
+.ruke-Image-Wrapper{
+  perspective: 1000px;
+}
+.ruke-Image{
+  transform: rotateX(15deg) scale(1);
+  transition: transform 0.5s ease;
+  will-change: transform;
+
+}
+.ruke-Image.scrolled{
+  transform: rotateX(0deg) scale(1.05) translateY(40px);
+}
